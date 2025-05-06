@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct dataBase{
+    var name: String
     var user: String
     var password: String
 }
 
 struct ContentView: View {
     @State var users: [dataBase] = [
-        dataBase(user: "Dimitri.S", password: "OMW.Fifth")
+        dataBase(name: "Dimiti", user: "Dimitri.S", password: "OMW.Fifth")
     ]
     @State var username: String = ""
     @State var pass: String = ""
@@ -62,7 +63,7 @@ struct ContentView: View {
                                 .cornerRadius(30)
                                 .padding()
                         }
-                        NavigationLink(destination: HomePage(), isActive: $passedTest) {
+                        NavigationLink(destination: HomePage().navigationBarBackButtonHidden(), isActive: $passedTest) {
                             EmptyView()
                         }
                         Spacer()
@@ -70,10 +71,12 @@ struct ContentView: View {
                     }
                     VStack{
                         NavigationLink(destination:{
-                            AccountCreationPage()
+                            AccountCreationPage(users: $users)
+//                                .navigationBarBackButtonHidden()
                         }){
                             Text("Account Creation")
                                 .frame(width: 500, height: 70)
+                                .font(.title2)
                                 .foregroundColor(.white)
                                 .background(Color(hex:"#720124"))
                                 .cornerRadius(30)
@@ -85,9 +88,11 @@ struct ContentView: View {
         }
     }
     func checkUsers(){
+        print(users.count)
         for i in users.indices{
             if username == users[i].user && pass == users[i].password{
                 passedTest = true
+                print(users[i])
             }
         }
     }

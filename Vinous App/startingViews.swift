@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct startingViews: View {
-    @State var text: String = ""
     var body: some View {
         ZStack{
             Image("Wallpaper")

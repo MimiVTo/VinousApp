@@ -19,7 +19,9 @@ struct ContentView: View {
     ]
     @State var username: String = ""
     @State var pass: String = ""
+    @State var loginedAs: String = ""
     @State private var passedTest: Bool = false
+    @State var realAcc: Bool = false
     
     var body: some View {
         //Login Page
@@ -63,7 +65,13 @@ struct ContentView: View {
                                 .cornerRadius(30)
                                 .padding()
                         }
-                        NavigationLink(destination: HomePage().navigationBarBackButtonHidden(), isActive: $passedTest) {
+                        .alert(isPresented: $realAcc){
+                            Alert(
+                                title: Text("Lock in!"),
+                                message: Text("Please login with valid information.")
+                            )
+                        }
+                        NavigationLink(destination: TabPage().navigationBarBackButtonHidden(), isActive: $passedTest) {
                             EmptyView()
                         }
                         Spacer()
@@ -91,8 +99,12 @@ struct ContentView: View {
         print(users.count)
         for i in users.indices{
             if username == users[i].user && pass == users[i].password{
+                loginedAs = username
                 passedTest = true
                 print(users[i])
+            }
+            else{
+                realAcc = true
             }
         }
     }

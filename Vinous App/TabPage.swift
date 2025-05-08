@@ -10,12 +10,13 @@ import SwiftUI
 struct TabPage: View {
     var body: some View {
         TabView{
+            //Shows the home screen
             HomePage()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
-
+            //Profile
             AccountPage()
                 .tabItem{
                     Image(systemName: "heart")

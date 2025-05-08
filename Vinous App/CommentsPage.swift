@@ -42,7 +42,7 @@ struct CommentsPage: View {
                                 .cornerRadius(20)
                         }
                         .padding()
-                        .frame(width: 350)
+                        .frame(width: 300)
                         .background(Color(hex:"#fdf3f2"))
                         .cornerRadius(20)
                     }
@@ -56,5 +56,5 @@ struct CommentsPage: View {
 }
 
 #Preview {
-    CommentsPage(commentShown: posts(user: "", tier: "", postedMessage: "", likes: 0, shares: 0, comments: 0, whoPosted: [], commentsPosted: []))
+    CommentsPage(commentShown: posts(user: "", tier: "", postedMessage: "", likes: 0, shares: 0, comments: 0, whoPosted: [], commentsPosted: [], postLiked: false, postShared: false))
 }

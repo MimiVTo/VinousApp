@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct posts{
+    //STRUCT HOLDS ALL OF THE INFO FOR THE HOME PAGE
     var user: String
     var tier: String
     var postedMessage: String
@@ -16,23 +17,29 @@ struct posts{
     var comments: Int
     var whoPosted: [String]
     var commentsPosted: [String]
+    var postLiked: Bool
+    var postShared: Bool
 }
 
 struct HomePage: View {
 
     @State var viewedPosts: [posts] = [
-        posts(user: "Dimitri Silvmir", tier: "Gold", postedMessage: "Welcome to VinousZone! Here in VinousZone, you can post written messages about anything! Just as long as it's appropriate", likes: 3628, shares: 543, comments: 0, whoPosted: [], commentsPosted: []),
-        posts(user: "Raven Schmidt", tier: "Knight", postedMessage: "Guys, I just ate all of the cookies.. Without telling my wife. Am I cooked?", likes: 131, shares: 303, comments: 2, whoPosted: ["Dimitri Silvmir", "Rosaline Becker"], commentsPosted: ["You're cooked..", "Come home."]),
-        posts(user: "Rosaline Becker", tier: "Star Lover", postedMessage: "WHO ATE ALL OF THE COOKIES?? I literally just made a batch a few minutes ago! THEY'RE RAW.", likes: 120, shares: 289, comments: 1, whoPosted: ["Rosemary Fouque"], commentsPosted: ["Oh no, you might want to check in with your husband."]),
-        posts(user: "Irene Silvmir", tier: "Floral", postedMessage: "Today, I learned a few trick for planting wonderful flowers!", likes: 300, shares: 10, comments: 2, whoPosted: ["Dimitri Silvmir"], commentsPosted: ["That's wonderful, mom!"])
+        //MESSAGES THAT ARE POSTED ON THE BOARD
+        posts(user: "Dimitri Silvmir", tier: "Gold", postedMessage: "Welcome to VinousZone! Here in VinousZone, you can post written messages about anything! Just as long as it's appropriate", likes: 3628, shares: 543, comments: 0, whoPosted: [], commentsPosted: [], postLiked: false, postShared: false),
+        posts(user: "Raven Schmidt", tier: "Knight", postedMessage: "Guys, I just ate all of the cookies.. Without telling my wife. Am I cooked?", likes: 131, shares: 303, comments: 2, whoPosted: ["Dimitri Silvmir", "Rosaline Becker"], commentsPosted: ["You're cooked..", "Come home."], postLiked: false, postShared: false),
+        posts(user: "Rosaline Becker", tier: "Star Lover", postedMessage: "WHO ATE ALL OF THE COOKIES?? I literally just made a batch a few minutes ago! THEY'RE RAW.", likes: 120, shares: 289, comments: 1, whoPosted: ["Rosemary Fouque"], commentsPosted: ["Oh no, you might want to check in with your husband."], postLiked: false, postShared: false),
+        posts(user: "Irene Silvmir", tier: "Floral", postedMessage: "Today, I learned a few trick for planting wonderful flowers!", likes: 300, shares: 10, comments: 3, whoPosted: ["Dimitri Silvmir", "Rosaline Becker", "Rosemary Fouque"], commentsPosted: ["We don't have anymore room in the house...", "You've got to show me one day!", "I'd love to see a photo of them if I could drop by later!"], postLiked: false, postShared: false),
     ]
     
     var body: some View {
         NavigationView{
+            //Scrollable stuff
             ScrollView{
                 ZStack{
+                    //Background
                     InteriorViews()
                     VStack{
+                        //TITLE ---------------------------
                         Text("Home")
                             .font(.largeTitle)
                             .fontWeight(.semibold)
@@ -42,10 +49,11 @@ struct HomePage: View {
                             .background(Color(hex:"#fdf3f2"))
                             .cornerRadius(20)
                             .padding()
-                        
+                        //FOR LOOP
                         ForEach (viewedPosts.indices, id:\.self){i in
                             VStack{
                                 HStack{
+                                    //Username
                                     Text(viewedPosts[i].user)
                                         .padding()
                                         .fontDesign(.monospaced)
@@ -59,6 +67,7 @@ struct HomePage: View {
                                         .foregroundColor(.white)
                                         .background(Color(hex:""))
                                         .cornerRadius(20)
+                                    //Tier for fun
                                 }
                                 Text(viewedPosts[i].postedMessage)
                                     .padding()
@@ -71,7 +80,17 @@ struct HomePage: View {
                                 VStack{
                                     HStack{
                                         Button(action: {
-                                            viewedPosts[i].likes += 1
+                                            //YOU CAN LIKE A POST -------------------
+                                            if viewedPosts[i].postLiked == false{
+                                                //ADD TO LIKES
+                                                viewedPosts[i].likes += 1
+                                                viewedPosts[i].postLiked = true
+                                            }
+                                            else{
+                                                viewedPosts[i].likes -= 1
+                                                //UNLIKE THE POST
+                                                viewedPosts[i].postLiked = false
+                                            }
                                         }){
                                             Text("ꫂ ၴႅၴ Like \(viewedPosts[i].likes)")
                                         }
@@ -84,7 +103,16 @@ struct HomePage: View {
                                         
                                         // SEPARATING THE ACTIONS TO MAKE CLEAR --------------------
                                         Button(action: {
-                                            viewedPosts[i].shares += 1
+                                            if viewedPosts[i].postShared == false{
+                                                viewedPosts[i].shares += 1
+                                                //ADD TO SHARES
+                                                viewedPosts[i].postShared = true
+                                            }
+                                            else{
+                                                viewedPosts[i].shares -= 1
+                                                //UNSHARE POST
+                                                viewedPosts[i].postShared = false
+                                            }
                                         }){
                                             Text("ᯓ➤ Share \(viewedPosts[i].shares)")
                                         }
@@ -97,6 +125,7 @@ struct HomePage: View {
                                     }
                                     NavigationLink(destination: {
                                         CommentsPage(commentShown: viewedPosts[i])
+                                        //SHOWS CLOSE UP
                                     }){
                                         Text("✎ Comments \(viewedPosts[i].comments)")
                                             .padding()

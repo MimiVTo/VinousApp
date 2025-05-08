@@ -27,10 +27,12 @@ struct ContentView: View {
         //Login Page
         NavigationView{
             ZStack{
+                //Background
                 startingViews()
                 VStack{
                     VStack{
                         Spacer()
+                        //Title
                         Text("Welcome to\nVinousZone")
                             .font(.largeTitle)
                             .frame(width:250, height:100)
@@ -39,23 +41,27 @@ struct ContentView: View {
                             .background(Color(hex:"#720124"))
                             .cornerRadius(20)
                             .padding()
+                        // -----------------------------
                         
-                        TextField("Username", text: $username)
+                        TextField("Username OR EMAIL", text: $username)
                             .padding()
                             .frame(width: 300)
                             .background()
                             .cornerRadius(30)
                             .padding()
-                        
+                        // USERNAME OR EMAIL
                         TextField("Password", text: $pass)
                             .padding()
                             .frame(width: 300)
                             .background()
                             .cornerRadius(30)
                             .padding()
+                        // PASSWORD
                         
+                        // -----------------------------
                         Button(action:{
                             checkUsers()
+                            //function to check if thats a valid user
                         }){
                             Text("❤︎")
                                 .padding()
@@ -66,6 +72,7 @@ struct ContentView: View {
                                 .cornerRadius(30)
                                 .padding()
                         }
+                        //Dumb alert for if they arent a valid user LOL
                         .alert(isPresented: $realAcc){
                             Alert(
                                 title: Text("Lock in!"),
@@ -78,8 +85,10 @@ struct ContentView: View {
                         Spacer()
                         
                     }
+                    //Navigation link to create an account
                     VStack{
                         NavigationLink(destination:{
+                            //takes them to the account creation page
                             AccountCreationPage(users: $users)
 //                                .navigationBarBackButtonHidden()
                         }){
@@ -97,16 +106,21 @@ struct ContentView: View {
             }
         }
     }
+    //function to check
     func checkUsers(){
         print(users.count)
+        //for loop
         for i in users.indices{
+            //checks if its an actual user
             if username == users[i].user && pass == users[i].password{
+                //Make it look cool fr
                 loginedAs = username
                 passedTest = true
                 print(users[i])
             }
             else{
                 realAcc = true
+                //makes the alert go off
             }
         }
     }

@@ -18,8 +18,10 @@ struct AccountCreationPage: View {
     var body: some View {
         NavigationView{
             ZStack{
+                //BACK GROUND --------------------------------------
                 startingViews()
                 VStack{
+                    //TITLE OF THE PAGE
                     Text("CREATE ACCOUNT")
                         .font(.largeTitle)
                         .fontDesign(.monospaced)
@@ -28,29 +30,30 @@ struct AccountCreationPage: View {
                         .background(Color(hex:"#720124"))
                         .cornerRadius(20)
                         .padding()
-                    
+                    //PERSON'S NAME
                     TextField("Name", text: $personalName)
                         .padding()
                         .frame(width: 300)
                         .background()
                         .cornerRadius(30)
                         .padding()
-                    
+                    //USERNAME
                     TextField("Username", text: $userName)
                         .padding()
                         .frame(width: 300)
                         .background()
                         .cornerRadius(30)
                         .padding()
-                    
+                    //PASSWORD CHOSEN
                     TextField("Password", text: $chosenPassword)
                         .padding()
                         .frame(width: 300)
                         .background()
                         .cornerRadius(30)
                         .padding()
-                    
+                    //BUTTON TO IMPLEMENT IT
                     Button(action:{
+                        //FUNCTION
                         makeAccount()
                     }){
                         Text("❤︎")
@@ -62,6 +65,7 @@ struct AccountCreationPage: View {
                             .cornerRadius(30)
                             .padding()
                     }
+                    //Alert if its already a taken user
                     .alert(isPresented: $inUse){
                         Alert(
                             title: Text("Username Already in Use!"),
@@ -77,11 +81,14 @@ struct AccountCreationPage: View {
     }
     
     func makeAccount(){
+        //for loop
         for i in users.indices{
+            //checks if the username is already in use
             if userName == users[i].user{
                 inUse = true
             }
             else{
+                //if its not taken then append the information into the database
                 let newAccount = dataBase(name: personalName, user: userName, password: chosenPassword)
                 users.append(newAccount)
                 created = true

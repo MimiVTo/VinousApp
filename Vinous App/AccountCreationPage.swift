@@ -22,6 +22,7 @@ struct AccountCreationPage: View {
                 VStack{
                     Text("CREATE ACCOUNT")
                         .font(.largeTitle)
+                        .fontDesign(.monospaced)
                         .frame(width:320, height:95)
                         .foregroundColor(.white)
                         .background(Color(hex:"#720124"))

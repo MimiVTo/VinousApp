@@ -8,18 +8,23 @@
 import SwiftUI
 
 struct AccountPage: View {
+    @Binding var userLogged: [loggedUser]
+    
     var body: some View {
         NavigationView{
-            ZStack{
-                InteriorViews()
-                VStack{
-                    
+            ScrollView{
+                ZStack{
+                    InteriorViews()
+                    VStack{
+                        
+                    }
                 }
             }
+            .background(Color(hex:"#b7a798"))
         }
     }
 }
 
 #Preview {
-    AccountPage()
+    AccountPage(userLogged: .constant([]))
 }

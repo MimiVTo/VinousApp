@@ -13,13 +13,20 @@ struct dataBase{
     var password: String
 }
 
+struct loggedUser{
+    var name: String
+    var user: String
+    var tier: String
+    var password: String
+}
+
 struct ContentView: View {
     @State var users: [dataBase] = [
         dataBase(name: "Dimiti", user: "Dimitri.S", password: "OMW.Fifth")
     ]
+    @State var userLoggedAs: [loggedUser] = []
     @State var username: String = ""
     @State var pass: String = ""
-    @State var loginedAs: String = ""
     @State private var passedTest: Bool = false
     @State var realAcc: Bool = false
     
@@ -43,7 +50,7 @@ struct ContentView: View {
                             .padding()
                         // -----------------------------
                         
-                        TextField("Username OR EMAIL", text: $username)
+                        TextField("Username or Email", text: $username)
                             .padding()
                             .frame(width: 300)
                             .background()
@@ -79,7 +86,7 @@ struct ContentView: View {
                                 message: Text("Please login with valid information.")
                             )
                         }
-                        NavigationLink(destination: TabPage().navigationBarBackButtonHidden(), isActive: $passedTest) {
+                        NavigationLink(destination: TabPage(userPage: $userLoggedAs).navigationBarBackButtonHidden(), isActive: $passedTest) {
                             EmptyView()
                         }
                         Spacer()
@@ -112,9 +119,11 @@ struct ContentView: View {
         //for loop
         for i in users.indices{
             //checks if its an actual user
+            realAcc = false
             if username == users[i].user && pass == users[i].password{
                 //Make it look cool fr
-                loginedAs = username
+                let accountLoggedInAs = loggedUser(name: users[i].name, user: users[i].user, tier: "Newcomer", password: users[i].password)
+                userLoggedAs.append(accountLoggedInAs)
                 passedTest = true
                 print(users[i])
             }
@@ -122,6 +131,7 @@ struct ContentView: View {
                 realAcc = true
                 //makes the alert go off
             }
+            
         }
     }
 }

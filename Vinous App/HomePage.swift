@@ -31,6 +31,8 @@ struct HomePage: View {
         posts(user: "Irene Silvmir", tier: "Floral", postedMessage: "Today, I learned a few trick for planting wonderful flowers!", likes: 300, shares: 10, comments: 3, whoPosted: ["Dimitri Silvmir", "Rosaline Becker", "Rosemary Fouque"], commentsPosted: ["We don't have anymore room in the house...", "You've got to show me one day!", "I'd love to see a photo of them if I could drop by later!"], postLiked: false, postShared: false),
     ]
     
+    @Binding var userLoggedAs: [loggedUser]
+    
     var body: some View {
         NavigationView{
             //Scrollable stuff
@@ -49,6 +51,18 @@ struct HomePage: View {
                             .background(Color(hex:"#fdf3f2"))
                             .cornerRadius(20)
                             .padding()
+                        NavigationLink(destination:{
+                            userCommentsPage(thoughts: $viewedPosts, info: $userLoggedAs)
+                        }){
+                            Text("✎ᝰ Post a Thought!")
+                                .padding()
+                                .fontDesign(.monospaced)
+                                .foregroundColor(Color(hex:"#b86d71"))
+                                .background(Color(hex:"#fdf3f2"))
+                                .border(Color(hex:"#b86d71"))
+                        }
+                        
+
                         //FOR LOOP
                         ForEach (viewedPosts.indices, id:\.self){i in
                             VStack{
@@ -136,13 +150,14 @@ struct HomePage: View {
                                             .cornerRadius(20)
                                     }
                                 }
-                                .padding()
+//                                .padding()
                             }
                             .frame(width: 400)
                         }
                         .padding()
                     }
                 }
+                
 //                .navigationTitle("Home")
             }
             .background(Color(hex:"#b7a798"))
@@ -151,5 +166,5 @@ struct HomePage: View {
 }
 
 #Preview {
-    HomePage()
+    HomePage(userLoggedAs: .constant([]))
 }

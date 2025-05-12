@@ -23,6 +23,10 @@
 		4B3BA9212DCC0E88002DD172 /* TabPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BA9202DCC0E88002DD172 /* TabPage.swift */; };
 		4BCE326F2DCD4BA600F03C40 /* CommentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCE326E2DCD4BA600F03C40 /* CommentsPage.swift */; };
 		4BD4C2FE2DCE9FBA00B857F5 /* userCommentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD4C2FD2DCE9FBA00B857F5 /* userCommentsPage.swift */; };
+		4BE7F3602DD2A04900288BDD /* AccountSettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE7F35F2DD2A04900288BDD /* AccountSettingsPage.swift */; };
+		4BE7F3622DD2A83900288BDD /* AccountViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE7F3612DD2A83900288BDD /* AccountViews.swift */; };
+		4BE7F3642DD2AC7700288BDD /* FindAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE7F3632DD2AC7700288BDD /* FindAccounts.swift */; };
+		4BE7F3662DD2AE7D00288BDD /* AccountToFollowPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE7F3652DD2AE7D00288BDD /* AccountToFollowPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,10 @@
 		4B3BA9202DCC0E88002DD172 /* TabPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPage.swift; sourceTree = "<group>"; };
 		4BCE326E2DCD4BA600F03C40 /* CommentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsPage.swift; sourceTree = "<group>"; };
 		4BD4C2FD2DCE9FBA00B857F5 /* userCommentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCommentsPage.swift; sourceTree = "<group>"; };
+		4BE7F35F2DD2A04900288BDD /* AccountSettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsPage.swift; sourceTree = "<group>"; };
+		4BE7F3612DD2A83900288BDD /* AccountViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViews.swift; sourceTree = "<group>"; };
+		4BE7F3632DD2AC7700288BDD /* FindAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccounts.swift; sourceTree = "<group>"; };
+		4BE7F3652DD2AE7D00288BDD /* AccountToFollowPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountToFollowPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,7 @@
 				4B0226FB2DC955FE00A1170F /* Vinous_AppApp.swift */,
 				4B02272D2DC972F400A1170F /* startingViews.swift */,
 				4B3BA91C2DCC0665002DD172 /* InteriorViews.swift */,
+				4BE7F3612DD2A83900288BDD /* AccountViews.swift */,
 				4B0226FD2DC955FE00A1170F /* ContentView.swift */,
 				4B0227272DC959FE00A1170F /* AccountCreationPage.swift */,
 				4B3BA9202DCC0E88002DD172 /* TabPage.swift */,
@@ -122,6 +131,9 @@
 				4BD4C2FD2DCE9FBA00B857F5 /* userCommentsPage.swift */,
 				4BCE326E2DCD4BA600F03C40 /* CommentsPage.swift */,
 				4B3BA91E2DCC0A0E002DD172 /* AccountPage.swift */,
+				4BE7F35F2DD2A04900288BDD /* AccountSettingsPage.swift */,
+				4BE7F3632DD2AC7700288BDD /* FindAccounts.swift */,
+				4BE7F3652DD2AE7D00288BDD /* AccountToFollowPage.swift */,
 				4B0227252DC959EC00A1170F /* Color+Hex.swift */,
 				4B0226FF2DC9560000A1170F /* Assets.xcassets */,
 				4B0227012DC9560000A1170F /* Preview Content */,
@@ -286,11 +298,15 @@
 			files = (
 				4B3BA9212DCC0E88002DD172 /* TabPage.swift in Sources */,
 				4B02272E2DC972F400A1170F /* startingViews.swift in Sources */,
+				4BE7F3622DD2A83900288BDD /* AccountViews.swift in Sources */,
 				4B3BA91D2DCC0665002DD172 /* InteriorViews.swift in Sources */,
+				4BE7F3662DD2AE7D00288BDD /* AccountToFollowPage.swift in Sources */,
 				4B02272C2DC95F9000A1170F /* HomePage.swift in Sources */,
 				4B0226FE2DC955FE00A1170F /* ContentView.swift in Sources */,
 				4B0226FC2DC955FE00A1170F /* Vinous_AppApp.swift in Sources */,
 				4BCE326F2DCD4BA600F03C40 /* CommentsPage.swift in Sources */,
+				4BE7F3642DD2AC7700288BDD /* FindAccounts.swift in Sources */,
+				4BE7F3602DD2A04900288BDD /* AccountSettingsPage.swift in Sources */,
 				4B0227262DC959EC00A1170F /* Color+Hex.swift in Sources */,
 				4B3BA91F2DCC0A0E002DD172 /* AccountPage.swift in Sources */,
 				4B0227282DC959FE00A1170F /* AccountCreationPage.swift in Sources */,

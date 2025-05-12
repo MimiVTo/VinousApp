@@ -22,9 +22,11 @@ struct loggedUser{
 
 struct ContentView: View {
     @State var users: [dataBase] = [
-        dataBase(name: "Dimiti", user: "Dimitri.S", password: "OMW.Fifth")
+        dataBase(name: "Dimitri Silvmir", user: "Dimitri.S", password: "OMW.Fifth")
     ]
-    @State var userLoggedAs: [loggedUser] = []
+    @State var userLoggedAs: [loggedUser] = [
+//        loggedUser(name: "Dimitri", user: "Dimitri.S", tier: "Gold", password: "OMW.Fifth")
+    ]
     @State var username: String = ""
     @State var pass: String = ""
     @State private var passedTest: Bool = false
@@ -131,7 +133,6 @@ struct ContentView: View {
                 realAcc = true
                 //makes the alert go off
             }
-            
         }
     }
 }

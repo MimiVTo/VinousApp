@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct userCommentsPage: View {
+    
+    //VARIABLES ----------------------------
     @Binding var thoughts: [posts]
     @Binding var info: [loggedUser]
     @State var message: String = ""
@@ -24,11 +26,15 @@ struct userCommentsPage: View {
 //    var postShared: Bool
     
     var body: some View {
+        //Scrollable to be able to see the bigger messages
         ScrollView{
             ZStack{
+                //BACKGROUND
                 InteriorViews()
                 VStack{
+                    //title of the page
                     Text("POST")
+                    //Lots of detail for the app button fr
                         .font(.largeTitle)
                         .fontWeight(.semibold)
                         .fontDesign(.monospaced)
@@ -38,17 +44,18 @@ struct userCommentsPage: View {
                         .background(Color(hex:"#fdf3f2"))
                         .cornerRadius(20)
                         .padding()
-                    
+                    //Text editor for the user to input whatever they wanna say
                     TextEditor(text: $message)
                         .padding()
                         .frame(width: 350)
                         .background()
                         .cornerRadius(30)
-
+                    //Button to add the post onto the home page
                     Button(action:{
                         post()
                     }){
                         Text("✎ᝰ")
+                        //Lots of detail for the app button fr
                             .padding()
                             .frame(width: 100)
                             .fontDesign(.monospaced)

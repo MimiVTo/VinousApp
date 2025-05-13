@@ -21,7 +21,7 @@ struct AccountSettingsPage: View {
         ZStack{
             AccountViews()
             VStack{
-
+                //title of the page
                 Text("Account Settings")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
@@ -33,21 +33,21 @@ struct AccountSettingsPage: View {
                     .cornerRadius(20)
                     .padding()
                 Spacer()
-                
+                //able to change the username
                 TextField("Change User", text: $userChangedTo)
                     .padding()
                     .frame(width: 300)
                     .background()
                     .cornerRadius(30)
                     .padding()
-                
+                //able to change the name
                 TextField("Change Name", text: $nameChangedTo)
                     .padding()
                     .frame(width: 300)
                     .background()
                     .cornerRadius(30)
                     .padding()
-                
+                //able to change the bio
                 TextField("Change Bio", text: $bioChangedTo)
                     .padding()
                     .frame(width: 300)
@@ -55,7 +55,7 @@ struct AccountSettingsPage: View {
                     .cornerRadius(30)
                     .padding()
                 Spacer()
-                
+                //Saving whatever you changed
                 Button(action:{
                     changeItems()
                 }){
@@ -72,6 +72,7 @@ struct AccountSettingsPage: View {
         }
     }
     func changeItems(){
+        //If these items are empty then don't change it
         if userChangedTo == ""{
             return
         }
@@ -90,6 +91,7 @@ struct AccountSettingsPage: View {
         else{
             bio = bioChangedTo
         }
+        //if they aren't empty then set it to whatever the user typed in
     }
 }
 

@@ -11,10 +11,12 @@ struct CommentsPage: View {
     var commentShown: posts
     
     var body: some View {
+        //Scrollable to see all of the comments
         ScrollView{
             ZStack{
                 InteriorViews()
                 VStack{
+                    //Title of the page
                     Text("COMMENTS")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
@@ -24,16 +26,17 @@ struct CommentsPage: View {
                         .background(Color(hex:"#fdf3f2"))
                         .cornerRadius(20)
                         .padding()
-                    
+                    //for loop to see all of the comments that were posted into this page
                     ForEach (commentShown.commentsPosted.indices, id: \.self){i in
                         VStack{
+                            //Shows who posted the comment
                             Text("\(commentShown.whoPosted[i])")
                                 .padding()
                                 .fontDesign(.monospaced)
                                 .foregroundColor(.white)
                                 .background(Color(hex:"#720124"))
                                 .cornerRadius(20)
-                            
+                            //shows the comment they posted
                             Text("\(commentShown.commentsPosted[i])")
                                 .padding()
                                 .fontDesign(.monospaced)
@@ -46,6 +49,7 @@ struct CommentsPage: View {
                         .background(Color(hex:"#fdf3f2"))
                         .cornerRadius(20)
                     }
+                    //spacer to make it not look awkward
                     Spacer()
                 }
                 

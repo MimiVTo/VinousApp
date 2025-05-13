@@ -20,11 +20,13 @@ struct AccountPage: View {
                 VStack{
                     Spacer()
                     HStack{
+                        //profile picture
                         Image("icon2")
                             .resizable()
                             .frame(width:80,height:80)
                             .padding()
                         VStack{
+                            //The user stuff
 //                            Text("\(userLogged[0].user)")
                             Text("Username")
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -40,6 +42,7 @@ struct AccountPage: View {
                         .padding()
                     }
                     HStack{
+                        //shows the following and follower count
                         Text("Following\n\(following)")
                             .padding()
                             .fontDesign(.monospaced)
@@ -49,12 +52,14 @@ struct AccountPage: View {
                             .fontDesign(.monospaced)
                             .foregroundColor(Color(hex:"#b86d71"))
                     }
+                    //The bio that they set
                     Text("\(bio)")
                         .frame(width: 300,height:80)
                         .foregroundColor(Color(hex:"#b86d71"))
                         .border(Color(hex:"#b86d71"))
                     HStack{
                         NavigationLink(destination: {
+                            //Be able to edit your stuff
                             AccountSettingsPage(userLogged: $userLogged, following: $following, followers: $followers, bio: $bio)
                         }){
                             Text("Edit")
@@ -67,6 +72,7 @@ struct AccountPage: View {
                         }
                         .padding()
                         NavigationLink(destination: {
+                            //able to go look at other profiles frfr
                             FindAccounts()
                         }){
                             Text("Find Accounts")

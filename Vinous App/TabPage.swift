@@ -11,6 +11,7 @@ struct TabPage: View {
     @Binding var userPage: [loggedUser]
     
     var body: some View {
+        //The tabview for the user to look at everything
         TabView{
             //Shows the home screen
             HomePage(userLoggedAs: $userPage)

@@ -18,22 +18,22 @@ struct AccountPage: View {
             ZStack{
                 AccountViews()
                 VStack{
+                    Spacer()
                     HStack{
                         Image("icon2")
                             .resizable()
                             .frame(width:80,height:80)
                             .padding()
                         VStack{
-//                               Text("\(userLogged[0].user)")
+//                            Text("\(userLogged[0].user)")
                             Text("Username")
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                 .fontDesign(.monospaced)
                                 .foregroundColor(Color(hex:"#b86d71"))
-//                                Text("\(userLogged[0].name)")
+//                            Text("\(userLogged[0].name)")
                             Text("Name")
                                 .fontDesign(.monospaced)
                                 .foregroundColor(Color(hex:"#b86d71"))
-                                .cornerRadius(20)
                             Text("_________________")
                                 .foregroundColor(Color(hex:"#b86d71"))
                         }
@@ -53,36 +53,38 @@ struct AccountPage: View {
                         .frame(width: 300,height:80)
                         .foregroundColor(Color(hex:"#b86d71"))
                         .border(Color(hex:"#b86d71"))
-                    NavigationLink(destination: {
-                        AccountSettingsPage(userLogged: $userLogged, following: $following, followers: $followers, bio: $bio)
-                    }){
-                        Text("Edit")
-                            .padding()
-                            .frame(height: 30)
-                            .fontDesign(.monospaced)
-                            .foregroundColor(.white)
-                            .background(Color(hex:"#b86d71"))
-                            .cornerRadius(20)
+                    HStack{
+                        NavigationLink(destination: {
+                            AccountSettingsPage(userLogged: $userLogged, following: $following, followers: $followers, bio: $bio)
+                        }){
+                            Text("Edit")
+                                .padding()
+                                .frame(height: 30)
+                                .fontDesign(.monospaced)
+                                .foregroundColor(.white)
+                                .background(Color(hex:"#b86d71"))
+                                .cornerRadius(20)
+                        }
+                        .padding()
+                        NavigationLink(destination: {
+                            FindAccounts()
+                        }){
+                            Text("Find Accounts")
+                                .padding()
+                                .frame(height: 30)
+                                .fontDesign(.monospaced)
+                                .foregroundColor(.white)
+                                .background(Color(hex:"#b86d71"))
+                                .cornerRadius(20)
+                        }
+//                        .padding()
                     }
-                    .padding()
-                    NavigationLink(destination: {
-                        FindAccounts()
-                    }){
-                        Text("Edit")
-                            .padding()
-                            .frame(height: 30)
-                            .fontDesign(.monospaced)
-                            .foregroundColor(.white)
-                            .background(Color(hex:"#b86d71"))
-                            .cornerRadius(20)
-                    }
-                    .padding()
                 }
                 .padding()
                 .frame(width:350, height: 400)
                 .background(Color(hex:"#fdf3f2"))
                 .cornerRadius(30)
-                .position(x: 200, y: 250)
+                .position(x: 200, y: 350)
             }
         }
     }

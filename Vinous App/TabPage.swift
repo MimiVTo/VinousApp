@@ -18,6 +18,12 @@ struct TabPage: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
+            //SPECIAL
+            SpecialPage()
+                .tabItem{
+                    Image(systemName: "star")
+                    Text("Special")
+                }
             //Profile
             AccountPage(userLogged: $userPage)
                 .tabItem{

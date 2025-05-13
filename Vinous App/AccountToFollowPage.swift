@@ -9,8 +9,94 @@ import SwiftUI
 
 struct AccountToFollowPage: View {
     @State var account: accountsToFollow
+    @State var followingThem: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            ZStack{
+                AccountViews()
+                VStack{
+                    HStack{
+                        if account.user == "Dimitri.S"{
+                            Image("DimitriIcon")
+                                .resizable()
+                                .frame(width:100,height:110)
+//                                .padding()
+                        }
+                        else{
+                            Image("icon2")
+                                .resizable()
+                                .frame(width:80,height:80)
+                                .padding()
+                        }
+                        VStack{
+                            Text("\(account.user)")
+//                            Text("Username")
+                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                .fontDesign(.monospaced)
+                                .foregroundColor(Color(hex:"#b86d71"))
+                            Text("\(account.name)")
+//                            Text("Name")
+                                .fontDesign(.monospaced)
+                                .foregroundColor(Color(hex:"#b86d71"))
+                            Text("_______________")
+                                .foregroundColor(Color(hex:"#b86d71"))
+                        }
+                        .padding()
+                    }
+                    HStack{
+                        Text("Following\n\(account.following)")
+                            .padding()
+                            .fontDesign(.monospaced)
+                            .foregroundColor(Color(hex:"#b86d71"))
+                        Text("Follower\n\(account.followers)")
+                            .padding()
+                            .fontDesign(.monospaced)
+                            .foregroundColor(Color(hex:"#b86d71"))
+                    }
+                    Text("\(account.bio)")
+                        .frame(width: 300,height:80)
+                        .foregroundColor(Color(hex:"#b86d71"))
+                        .border(Color(hex:"#b86d71"))
+                        .padding()
+                    HStack{
+                        if followingThem == false{
+                            Button(action:{
+                                account.followers += 1
+                                followingThem = true
+                            }){
+                                Text("Follow")
+                                    .padding()
+                                    .frame(height: 30)
+                                    .fontDesign(.monospaced)
+                                    .foregroundColor(.white)
+                                    .background(Color(hex:"#b86d71"))
+                                    .cornerRadius(20)
+                            }
+                        }
+                        else{
+                            Button(action:{
+                                account.followers -= 1
+                                followingThem = false
+                            }){
+                                Text("Unfollow")
+                                    .padding()
+                                    .frame(height: 30)
+                                    .fontDesign(.monospaced)
+                                    .foregroundColor(.white)
+                                    .background(Color(hex:"#b86d71"))
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                }
+                .padding()
+                .frame(width:350, height: 400)
+                .background(Color(hex:"#fdf3f2"))
+                .cornerRadius(30)
+                .position(x: 200, y: 350)
+            }
+        }
     }
 }
 

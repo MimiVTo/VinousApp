@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AccountToFollowPage: View {
-    @State var account: accountsToFollow
+    @Binding var account: accountsToFollow
     @State var followingThem: Bool = false
     @Binding var followingPerson: Int
     
@@ -110,5 +110,5 @@ struct AccountToFollowPage: View {
 }
 
 #Preview {
-    AccountToFollowPage(account: accountsToFollow(user: "", name: "", following: 0, followers: 0, bio: "", followedAlready: false), followingPerson: .constant(0))
+    AccountToFollowPage(account: .constant(accountsToFollow(user: "", name: "", following: 0, followers: 0, bio: "", followedAlready: false)), followingPerson: .constant(0))
 }

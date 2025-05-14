@@ -49,7 +49,7 @@ struct FindAccounts: View {
                         VStack{
                             if accountsToFind[i].followedAlready == false{
                                 NavigationLink(destination:{
-                                    AccountToFollowPage(account: accountsToFind[i], followingPerson: $following)
+                                    AccountToFollowPage(account: $accountsToFind[i], followingPerson: $following)
                                         .navigationBarBackButtonHidden()
                                 }){
                                     Text(accountsToFind[i].user)

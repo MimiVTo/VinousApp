@@ -27,13 +27,13 @@ struct AccountPage: View {
                             .padding()
                         VStack{
                             //The user stuff
-                            Text("\(userLogged[0].user)")
-//                            Text("Username")
+//                            Text("\(userLogged[0].user)")
+                            Text("Username")
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                 .fontDesign(.monospaced)
                                 .foregroundColor(Color(hex:"#b86d71"))
-                            Text("\(userLogged[0].name)")
-//                            Text("Name")
+//                            Text("\(userLogged[0].name)")
+                            Text("Name")
                                 .fontDesign(.monospaced)
                                 .foregroundColor(Color(hex:"#b86d71"))
                             Text("_________________")

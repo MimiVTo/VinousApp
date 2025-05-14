@@ -10,6 +10,7 @@ import SwiftUI
 struct AccountToFollowPage: View {
     @State var account: accountsToFollow
     @State var followingThem: Bool = false
+    @Binding var followingPerson: Int
     
     var body: some View {
         NavigationView{
@@ -45,6 +46,7 @@ struct AccountToFollowPage: View {
                         .padding()
                     }
                     HStack{
+                        //Shows their following and follower account
                         Text("Following\n\(account.following)")
                             .padding()
                             .fontDesign(.monospaced)
@@ -54,16 +56,21 @@ struct AccountToFollowPage: View {
                             .fontDesign(.monospaced)
                             .foregroundColor(Color(hex:"#b86d71"))
                     }
+                    //the bio ----------------------------
                     Text("\(account.bio)")
                         .frame(width: 300,height:80)
                         .foregroundColor(Color(hex:"#b86d71"))
                         .border(Color(hex:"#b86d71"))
                         .padding()
                     HStack{
+                        //choose to follow them or to unfollow them
                         if followingThem == false{
+                            //button to follow
                             Button(action:{
                                 account.followers += 1
+                                followingPerson += 1
                                 followingThem = true
+                                account.followedAlready = true
                             }){
                                 Text("Follow")
                                     .padding()
@@ -75,8 +82,10 @@ struct AccountToFollowPage: View {
                             }
                         }
                         else{
+                            //the button the unfollow
                             Button(action:{
                                 account.followers -= 1
+                                followingPerson -= 1
                                 followingThem = false
                             }){
                                 Text("Unfollow")
@@ -101,5 +110,5 @@ struct AccountToFollowPage: View {
 }
 
 #Preview {
-    AccountToFollowPage(account: accountsToFollow(user: "", name: "", following: 0, followers: 0, bio: ""))
+    AccountToFollowPage(account: accountsToFollow(user: "", name: "", following: 0, followers: 0, bio: "", followedAlready: false), followingPerson: .constant(0))
 }

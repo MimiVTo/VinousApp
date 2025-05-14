@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct AccountSettingsPage: View {
+    //Linked / Binding variables
     @Binding var userLogged: [loggedUser]
     @Binding var following: Int
     @Binding var followers: Int
     @Binding var bio: String
     
+    //Stated variables
     @State var userChangedTo: String = ""
     @State var nameChangedTo: String = ""
     @State var bioChangedTo: String = ""
     
     var body: some View {
         ZStack{
+            //background
             AccountViews()
             VStack{
                 //title of the page

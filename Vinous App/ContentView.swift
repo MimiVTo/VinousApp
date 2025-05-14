@@ -22,7 +22,7 @@ struct loggedUser{
 
 struct ContentView: View {
     @State var users: [dataBase] = [
-        dataBase(name: "Dimitri Silvmir", user: "Dimitri.S", password: "OMW.Fifth")
+        dataBase(name: "Placeholder", user: "Placer.Holder", password: "Password")
     ]
     @State var userLoggedAs: [loggedUser] = [
 //        loggedUser(name: "Dimitri", user: "Dimitri.S", tier: "Gold", password: "OMW.Fifth")

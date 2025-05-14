@@ -10,9 +10,7 @@ import SwiftUI
 struct AccountSettingsPage: View {
     //Linked / Binding variables
     @Binding var userLogged: [loggedUser]
-    @Binding var following: Int
-    @Binding var followers: Int
-    @Binding var bio: String
+    @Binding var whichUser: Int
     
     //Stated variables
     @State var userChangedTo: String = ""
@@ -80,24 +78,24 @@ struct AccountSettingsPage: View {
             return
         }
         else{
-            userLogged[0].user = userChangedTo
+            userLogged[whichUser].user = userChangedTo
         }
         if nameChangedTo == ""{
             return
         }
         else{
-            userLogged[0].name = nameChangedTo
+            userLogged[whichUser].name = nameChangedTo
         }
         if bioChangedTo == ""{
             return
         }
         else{
-            bio = bioChangedTo
+            userLogged[whichUser].bio = bioChangedTo
         }
         //if they aren't empty then set it to whatever the user typed in
     }
 }
 
 #Preview {
-    AccountSettingsPage(userLogged: .constant([]), following: .constant(0), followers: .constant(0), bio: .constant(""))
+    AccountSettingsPage(userLogged: .constant([]), whichUser: .constant(0))
 }

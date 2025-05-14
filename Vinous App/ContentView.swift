@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+//STRUCTS TO HELP WITH THE PROGESS ------------------------
 struct dataBase{
     var name: String
     var user: String
@@ -18,19 +20,25 @@ struct loggedUser{
     var user: String
     var tier: String
     var password: String
+    var following: Int
+    var followers: Int
+    var bio: String
 }
 
 struct ContentView: View {
+    //variables -----------------------------------------------
     @State var users: [dataBase] = [
         dataBase(name: "Placeholder", user: "Placer.Holder", password: "Password")
     ]
     @State var userLoggedAs: [loggedUser] = [
-//        loggedUser(name: "Dimitri", user: "Dimitri.S", tier: "Gold", password: "OMW.Fifth")
+        loggedUser(name: "Placeholder", user: "Placer.Holder", tier: "Newcomer", password: "Password", following: 0, followers: 0, bio: "")
     ]
     @State var username: String = ""
     @State var pass: String = ""
     @State private var passedTest: Bool = false
     @State var realAcc: Bool = false
+    //Count for which user is logged in
+    @State var whichUser: Int = 0
     
     var body: some View {
         //Login Page
@@ -88,7 +96,7 @@ struct ContentView: View {
                                 message: Text("Please login with valid information.")
                             )
                         }
-                        NavigationLink(destination: TabPage(userPage: $userLoggedAs).navigationBarBackButtonHidden(), isActive: $passedTest) {
+                        NavigationLink(destination: TabPage(userPage: $userLoggedAs, whichUser: $whichUser).navigationBarBackButtonHidden(), isActive: $passedTest) {
                             EmptyView()
                         }
                         Spacer()
@@ -124,7 +132,8 @@ struct ContentView: View {
             realAcc = false
             if username == users[i].user && pass == users[i].password{
                 //Make it look cool fr
-                let accountLoggedInAs = loggedUser(name: users[i].name, user: users[i].user, tier: "Newcomer", password: users[i].password)
+                let accountLoggedInAs = loggedUser(name: users[i].name, user: users[i].user, tier: "Newcomer", password: users[i].password, following: 0, followers: 0, bio: "")
+                whichUser += 1
                 userLoggedAs.append(accountLoggedInAs)
                 passedTest = true
                 print(users[i])

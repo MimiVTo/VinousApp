@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AccountCreationPage: View {
+    //BINDED VARIABLES
     @Binding var users: [dataBase]
     @State var personalName: String = ""
     @State var userName: String = ""

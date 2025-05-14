@@ -10,7 +10,8 @@ import SwiftUI
 struct AccountToFollowPage: View {
     @Binding var account: accountsToFollow
     @State var followingThem: Bool = false
-    @Binding var followingPerson: Int
+    @Binding var followingPerson: [loggedUser]
+    @Binding var whichUser: Int
     
     var body: some View {
         NavigationView{
@@ -68,7 +69,7 @@ struct AccountToFollowPage: View {
                             //button to follow
                             Button(action:{
                                 account.followers += 1
-                                followingPerson += 1
+                                followingPerson[whichUser].following += 1
                                 followingThem = true
                                 account.followedAlready = true
                             }){
@@ -85,7 +86,7 @@ struct AccountToFollowPage: View {
                             //the button the unfollow
                             Button(action:{
                                 account.followers -= 1
-                                followingPerson -= 1
+                                followingPerson[whichUser].following -= 1
                                 followingThem = false
                             }){
                                 Text("Unfollow")
@@ -110,5 +111,5 @@ struct AccountToFollowPage: View {
 }
 
 #Preview {
-    AccountToFollowPage(account: .constant(accountsToFollow(user: "", name: "", following: 0, followers: 0, bio: "", followedAlready: false)), followingPerson: .constant(0))
+    AccountToFollowPage(account: .constant(accountsToFollow(user: "", name: "", following: 0, followers: 0, bio: "", followedAlready: false)), followingPerson: .constant([]), whichUser: .constant(0))
 }

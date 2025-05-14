@@ -6,27 +6,15 @@
 //
 
 import SwiftUI
-struct accountsToFollow{
-    var user: String
-    var name: String
-    var following: Int
-    var followers: Int
-    var bio: String
-    var followedAlready: Bool
-}
+
 
 struct FindAccounts: View {
-    //Varibles that hold the accounts
-    @State var accountsToFind: [accountsToFollow] = [
-        accountsToFollow(user: "Dimitri.S", name: "Dimitri Silvmir", following: 3, followers: 62807, bio: "Hey!\nWelcome to VinousZone!", followedAlready: false),
-        accountsToFollow(user: "SirRaven", name: "Raven Schmidt", following: 3, followers: 10317, bio: "R <3", followedAlready: false),
-        accountsToFollow(user: "RosalinesDiary", name: "Rosaline Becker", following: 4, followers: 21407, bio: "Professional Baker\nMarried!", followedAlready: false),
-        accountsToFollow(user: "TheRosemary", name: "Rosemary Fouque", following: 3, followers: 12257, bio: "Model\nShe/Her", followedAlready: false),
-    ]
-    
+
     
     //binded variable
-    @Binding var following: Int
+    @Binding var following: [loggedUser]
+    @Binding var whichUser: Int
+    @Binding var accountsToFind: [accountsToFollow]
     
     var body: some View {
         NavigationView{
@@ -49,7 +37,7 @@ struct FindAccounts: View {
                         VStack{
                             if accountsToFind[i].followedAlready == false{
                                 NavigationLink(destination:{
-                                    AccountToFollowPage(account: $accountsToFind[i], followingPerson: $following)
+                                    AccountToFollowPage(account: $accountsToFind[i], followingPerson: $following, whichUser: $whichUser)
                                         .navigationBarBackButtonHidden()
                                 }){
                                     Text(accountsToFind[i].user)
@@ -73,5 +61,5 @@ struct FindAccounts: View {
 }
 
 #Preview {
-    FindAccounts(following: .constant(0))
+    FindAccounts(following: .constant([]), whichUser: .constant(0), accountsToFind: .constant([]))
 }

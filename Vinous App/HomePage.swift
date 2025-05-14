@@ -22,7 +22,8 @@ struct posts{
 }
 
 struct HomePage: View {
-
+    
+    //BIG ARRAY
     @State var viewedPosts: [posts] = [
         //MESSAGES THAT ARE POSTED ON THE BOARD
         posts(user: "Dimitri Silvmir", tier: "Gold", postedMessage: "Welcome to VinousZone! Here in VinousZone, you can post written messages about anything! Just as long as it's appropriate", likes: 3628, shares: 543, comments: 0, whoPosted: [], commentsPosted: [], postLiked: false, postShared: false),
@@ -32,6 +33,7 @@ struct HomePage: View {
     ]
     
     @Binding var userLoggedAs: [loggedUser]
+    @Binding var whichUser: Int
     
     var body: some View {
         NavigationView{
@@ -52,7 +54,7 @@ struct HomePage: View {
                             .cornerRadius(20)
                             .padding()
                         NavigationLink(destination:{
-                            userCommentsPage(thoughts: $viewedPosts, info: $userLoggedAs)
+                            userCommentsPage(thoughts: $viewedPosts, info: $userLoggedAs, whichUser: $whichUser)
                         }){
                             Text("✎ᝰ Post a Thought!")
                                 .padding()
@@ -166,5 +168,5 @@ struct HomePage: View {
 }
 
 #Preview {
-    HomePage(userLoggedAs: .constant([]))
+    HomePage(userLoggedAs: .constant([]), whichUser: .constant(0))
 }

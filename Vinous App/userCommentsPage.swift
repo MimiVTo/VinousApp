@@ -13,6 +13,7 @@ struct userCommentsPage: View {
     @Binding var thoughts: [posts]
     @Binding var info: [loggedUser]
     @State var message: String = ""
+    @Binding var whichUser: Int
     
 //    var user: String
 //    var tier: String
@@ -73,11 +74,11 @@ struct userCommentsPage: View {
     }
     
     func post(){
-        let userPostedThis = posts(user: info[0].user, tier: info[0].tier, postedMessage: message, likes: 0, shares: 0, comments: 0, whoPosted: [], commentsPosted: [], postLiked: false, postShared: false)
+        let userPostedThis = posts(user: info[whichUser].user, tier: info[whichUser].tier, postedMessage: message, likes: 0, shares: 0, comments: 0, whoPosted: [], commentsPosted: [], postLiked: false, postShared: false)
         thoughts.append(userPostedThis)
     }
 }
 
 #Preview {
-    userCommentsPage(thoughts: .constant([]), info: .constant([]))
+    userCommentsPage(thoughts: .constant([]), info: .constant([]), whichUser: .constant(0))
 }

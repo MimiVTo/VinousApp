@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct TabPage: View {
+    //Binded variables
     @Binding var userPage: [loggedUser]
+    @Binding var whichUser: Int
     
     var body: some View {
         //The tabview for the user to look at everything
         TabView{
             //Shows the home screen
-            HomePage(userLoggedAs: $userPage)
+            HomePage(userLoggedAs: $userPage, whichUser: $whichUser)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
@@ -26,7 +28,7 @@ struct TabPage: View {
                     Text("Special")
                 }
             //Profile
-            AccountPage(userLogged: $userPage)
+            AccountPage(userLogged: $userPage, whichUser: $whichUser)
                 .tabItem{
                     Image(systemName: "heart")
                     Text("Profile")
@@ -36,5 +38,5 @@ struct TabPage: View {
 }
 
 #Preview {
-    TabPage(userPage: .constant([]))
+    TabPage(userPage: .constant([]), whichUser: .constant(0))
 }
